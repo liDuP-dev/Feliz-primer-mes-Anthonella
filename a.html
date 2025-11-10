@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Primer Mes, Mi Pequeña Anthonella! ✨</title>
+    
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Variables CSS para facilitar cambios de color */
+        :root {
+            --color-fondo-principal: #FFEBEE;
+            --color-caja-principal: #FFFFFF;
+            --color-rosa-primario: #FF8BA7;
+            --color-gris-texto: #6B6B6B;
+            --color-sombra-suave: rgba(0, 0, 0, 0.08);
+            --color-dorado-suave: #FFDAB9;
+        }
+
+        /* Estilos generales del cuerpo */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--color-fondo-principal);
+            color: var(--color-gris-texto);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 30px;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            position: relative;
+        }
+        body::before { /* Estilo de fondo sutil */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, var(--color-dorado-suave) 0%, transparent 20%),
+                        radial-gradient(circle at bottom right, var(--color-fondo-principal) 0%, transparent 25%);
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        /* Contenedor del Mensaje */
+        .contenedor-mensaje {
+            background-color: var(--color-caja-principal);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 12px 25px var(--color-sombra-suave),
+                        0 0 0 5px var(--color-fondo-principal) inset;
+            max-width: 750px;
+            margin: 20px auto;
+            position: relative;
+            z-index: 10;
+            animation: fadeInScale 1.5s ease-out forwards;
+        }
+
+        /* Títulos y Texto */
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--color-rosa-primario);
+            font-size: 4.2em;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .firma {
+            font-family: 'Dancing Script', cursive;
+            color: var(--color-rosa-primario);
+            font-size: 2.2em;
+            margin-top: 40px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        .corazon { color: var(--color-rosa-primario); animation: pulse 1.5s infinite alternate; display: inline-block; }
+
+
+        /* ------ Contenedor de la Galería de Fotos (Ajustado) ------ */
+        .seccion-fotos-anthonella {
+            background: linear-gradient(145deg, #FFF0F5, #FFEAF0);
+            padding: 40px;
+            border-radius: 35px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+            margin: 50px auto;
+            max-width: 1000px;
+            z-index: 10;
+            animation: fadeInScale 1.5s ease-out forwards;
+            animation-delay: 0.5s; /* Aparece después del mensaje */
+        }
+
+        .seccion-fotos-anthonella h2 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--color-rosa-primario);
+            font-size: 3.5em;
+            margin-bottom: 35px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Estilos para las imágenes individuales */
+        .galeria-fotos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .galeria-foto-item {
+            position: relative;
+            width: 100%;
+            max-width: 300px;
+            height: 380px;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15),
+                        inset 0 0 0 5px rgba(255, 255, 255, 0.8);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease-out;
+            cursor: pointer;
+            z-index: 1;
+            /* La animación de entrada solo afecta la posición/escala inicial */
+            animation: imgFadeInBounce 1.5s ease-out forwards;
+        }
+
+        /* Aseguramos un retraso para que las fotos entren escalonadamente */
+        .galeria-foto-item:nth-child(1) { animation-delay: 1.2s; }
+        .galeria-foto-item:nth-child(2) { animation-delay: 1.5s; }
+        .galeria-foto-item:nth-child(3) { animation-delay: 1.8s; }
+
+
+        .galeria-fotos img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            filter: brightness(0.95);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.4s ease-out;
+        }
+
+        .galeria-foto-item::before { /* Efecto de borde degradado */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 4px solid transparent;
+            border-radius: 25px;
+            background: linear-gradient(45deg, var(--color-rosa-primario), var(--color-dorado-suave)) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            transition: all 0.4s ease-out;
+            z-index: 2;
+        }
+
+
+        .galeria-foto-item:hover {
+            transform: translateY(-12px) scale(1.05) rotate(-2deg);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
+        }
+        .galeria-foto-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(1);
+        }
+
+
+        /* Animaciones (Asegurando que la Opacidad final sea 1) */
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes imgFadeInBounce {
+            0% { opacity: 0; transform: translateY(50px) scale(0.8); }
+            60% { opacity: 1; transform: translateY(-10px) scale(1.05); }
+            100% { opacity: 1; transform: translateY(0) scale(1); } /* 100% visible y en posición final */
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+
+        /* Media queries para responsividad */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8em; }
+            .seccion-fotos-anthonella h2 { font-size: 2.2em; }
+            .galeria-foto-item { max-width: 46%; height: 320px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2em; }
+            .seccion-fotos-anthonella h2 { font-size: 1.8em; }
+            .galeria-foto-item { max-width: 90%; height: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor-mensaje">
+        <h1>¡Feliz Primer Mes, Anthonella! <span class="corazon"><i class="fas fa-heart"></i></span></h1>
+        <p>
+            Dios te envió para llenar a nuestra familia de bendiciones.<br>
+            Que te cuide, te proteja y te regale una vida llena de amor y alegría.
+        </p>
+        <p class="firma">
+            Te quiere mucho tu tía.
+        </p>
+    </div>
+
+    <div class="seccion-fotos-anthonella">
+        <h2>Fotos de Anthonella</h2>
+        <div class="galeria-fotos">
+            <div class="galeria-foto-item">
+                <img src="1.jpg" alt="Anthonella durmiendo plácidamente">
+            </div>
+            <div class="galeria-foto-item">
+                <img src="2.jpg" alt="Primer plano de Anthonella con mantita rosa">
+            </div>
+            <div class="galeria-foto-item">
+                <img src="3.jpg" alt="Anthonella pensativa, mirando a la cámara">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
